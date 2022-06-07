@@ -17,28 +17,37 @@ for (const box of boxes) {
     box.addEventListener("click",event=>{
             if(playLimit<9){
                 ticTac(box);
-            }else{
-                event.preventDefault();
+            }
+            if(playLimit===9){
+                replayGame();
             }
     });
 }
-function ticTac(box,event){
+function ticTac(box){
     if (sign==="O") {
-        box.textContent="X";
-        xList.push(box.getAttribute("data-value"));
-        if (checkXWin()) {
-            WinEffect(xList,"yellow");
-        }
-        sign="X";
-        incrimnetPlayLimit();
+        if (!boxReserved(box)) {
+            box.textContent="X";
+            xList.push(box.getAttribute("data-value"));
+            if (checkXWin()) {
+                WinEffect(xList,"yellow");
+                replayGame();
+                return ;
+            }
+            sign="X";
+            incrimnetPlayLimit();
+    }
     }else{
-        box.textContent="O";
-        oList.push(box.getAttribute("data-value"));
-        if (checkOWin()) {
-            WinEffect(oList,"red");
+        if (!boxReserved(box)) {    
+            box.textContent="O";
+            oList.push(box.getAttribute("data-value"));
+            if (checkOWin()) {
+                WinEffect(oList,"red");
+                replayGame();
+                return ;
+            }
+            sign="O";
+            incrimnetPlayLimit();
         }
-        sign="O";
-        incrimnetPlayLimit();
     }
 }
 function incrimnetPlayLimit() {
@@ -71,12 +80,42 @@ function checkToListAreEqual(array1,array2) {
     }
     return equalNumber>=3;
 }
+function boxReserved(box){
+    return box.textContent.length>0;
+}
 function WinEffect(list,color) {
-    for (const lst of list) {
+    for (const lst of pureWinList(list)) {
         for (const box of boxes) {
             if (box.getAttribute("data-value")===lst) {
                 box.style.backgroundColor=color;
             }
         }
+    }
+}
+function pureWinList(lst) {
+    let purWinList=[];
+    for (const winLst of winLists) {
+        for (const value of winLst) {
+            if (checkToListAreEqual(lst,winLst)) {
+                    for (const ls of lst) {
+                   if (value===ls) {
+                       purWinList.push(value);
+                   }
+               }
+            }
+       }
+    }
+    return purWinList;
+}
+function replayGame() {
+    let replay=confirm("GAME OVER! REPLAY ?");
+    if (replay) {
+        for (const box of boxes) {
+            box.textContent="";
+            box.style.backgroundColor="teal";
+        }
+        xList=[];
+        oList=[];
+        playLimit=0;
     }
 }
