@@ -37,3 +37,11 @@ body{
 .box:hover{
     background-color: #827397;
 }
+i{
+    font-size: 2em;
+    color: yellow;
+}
+.x{
+    font-size: 2em;
+    color: crimson;
+}

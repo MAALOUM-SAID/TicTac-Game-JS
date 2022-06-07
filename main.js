@@ -28,7 +28,7 @@ for (const box of boxes) {
 function ticTac(box){
     if (sign==="O") {
         if (!boxReserved(box)) {
-            box.textContent="X";
+            box.innerHTML="<i class='fa-solid x fa-xmark-large'>X</i>";
             xList.push(box.getAttribute("data-value"));
             if (checkXWin()) {
                 WinEffect(xList,"#B8F1B0");
@@ -42,7 +42,7 @@ function ticTac(box){
     }
     }else{
         if (!boxReserved(box)) {    
-            box.textContent="O";
+            box.innerHTML="<i class='fa-solid fa-o'></i>";
             oList.push(box.getAttribute("data-value"));
             if (checkOWin()) {
                 WinEffect(oList,"#14C38E");
@@ -119,7 +119,7 @@ function replayGame() {
     let replay=confirm("GAME OVER! REPLAY ?");
     if (replay) {
         for (const box of boxes) {
-            box.textContent="";
+            box.innerHTML="";
             box.style.backgroundColor="#00FFAB";
         }
         xList=[];
