@@ -7,23 +7,33 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #E9D5CA;
+}
+.container{
+    border: 2px solid #827397;
+    width: 330px;
+    border-radius: 5px;
 }
   
 .table{
-    width: 310px;
+    width: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
+    background-color:#363062;
 }
 .box{
     width: 100px;
-    height: 80px;
-    background-color: rgb(13, 158, 158);
+    height: 100px;
+    background-color:#00FFAB;
     margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2em;
     border-radius: 5px;
-    color: white;
+    color: #2E0249;
     cursor: pointer;
+}
+.box:hover{
+    background-color: #827397;
 }

@@ -19,7 +19,9 @@ for (const box of boxes) {
                 ticTac(box);
             }
             if(playLimit===9){
-                replayGame();
+                setTimeout(()=>{
+                    replayGame();
+                },2000);
             }
     });
 }
@@ -29,8 +31,10 @@ function ticTac(box){
             box.textContent="X";
             xList.push(box.getAttribute("data-value"));
             if (checkXWin()) {
-                WinEffect(xList,"yellow");
-                replayGame();
+                WinEffect(xList,"#B8F1B0");
+                setTimeout(()=>{
+                    replayGame();
+                },500);
                 return ;
             }
             sign="X";
@@ -41,8 +45,10 @@ function ticTac(box){
             box.textContent="O";
             oList.push(box.getAttribute("data-value"));
             if (checkOWin()) {
-                WinEffect(oList,"red");
-                replayGame();
+                WinEffect(oList,"#14C38E");
+                setTimeout(()=>{
+                    replayGame();
+                },500);
                 return ;
             }
             sign="O";
@@ -87,7 +93,9 @@ function WinEffect(list,color) {
     for (const lst of pureWinList(list)) {
         for (const box of boxes) {
             if (box.getAttribute("data-value")===lst) {
-                box.style.backgroundColor=color;
+                setTimeout(function () {
+                    box.style.backgroundColor=color;
+                },500);
             }
         }
     }
@@ -112,7 +120,7 @@ function replayGame() {
     if (replay) {
         for (const box of boxes) {
             box.textContent="";
-            box.style.backgroundColor="teal";
+            box.style.backgroundColor="#00FFAB";
         }
         xList=[];
         oList=[];
