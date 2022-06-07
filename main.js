@@ -18,6 +18,9 @@ for (const box of boxes) {
             if(playLimit<9){
                 ticTac(box);
             }
+            else{
+                event.preventDefault();
+            }
             if(playLimit===9){
                 setTimeout(()=>{
                     replayGame();
@@ -28,10 +31,11 @@ for (const box of boxes) {
 function ticTac(box){
     if (sign==="O") {
         if (!boxReserved(box)) {
-            box.innerHTML="<i class='fa-solid x fa-xmark-large'>X</i>";
+            box.textContent="X";
+            box.style.color="crimson";
             xList.push(box.getAttribute("data-value"));
             if (checkXWin()) {
-                WinEffect(xList,"#B8F1B0");
+                WinEffect(xList,"wheat");
                 setTimeout(()=>{
                     replayGame();
                 },500);
@@ -42,10 +46,11 @@ function ticTac(box){
     }
     }else{
         if (!boxReserved(box)) {    
-            box.innerHTML="<i class='fa-solid fa-o'></i>";
+            box.textContent="O";
+            box.style.color="Yellow";
             oList.push(box.getAttribute("data-value"));
             if (checkOWin()) {
-                WinEffect(oList,"#14C38E");
+                WinEffect(oList,"wheat");
                 setTimeout(()=>{
                     replayGame();
                 },500);
@@ -93,9 +98,7 @@ function WinEffect(list,color) {
     for (const lst of pureWinList(list)) {
         for (const box of boxes) {
             if (box.getAttribute("data-value")===lst) {
-                setTimeout(function () {
                     box.style.backgroundColor=color;
-                },500);
             }
         }
     }

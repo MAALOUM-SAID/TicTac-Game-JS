@@ -29,19 +29,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 4em;
     border-radius: 5px;
     color: #2E0249;
     cursor: pointer;
 }
 .box:hover{
     background-color: #827397;
-}
-i{
-    font-size: 2em;
-    color: yellow;
-}
-.x{
-    font-size: 2em;
-    color: crimson;
 }
