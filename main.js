@@ -24,7 +24,7 @@ for (const box of boxes) {
             if(playLimit===9){
                 setTimeout(()=>{
                     replayGame();
-                },2000);
+                },1000);
             }
     });
 }

@@ -7,7 +7,34 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #E9D5CA;
+    user-select: none;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+.choice-play-with{
+    width: 330px;
+    height: 50px;
+    border: 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.friend,.auto{
+    width: 100px;
+    height: 30px;
+    margin: 5px 50px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    cursor: pointer;
+    
 }
 .container{
     border: 2px solid #827397;
@@ -33,6 +60,7 @@ body{
     border-radius: 5px;
     color: #2E0249;
     cursor: pointer;
+
 }
 .box:hover{
     background-color: #827397;
